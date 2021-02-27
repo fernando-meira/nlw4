@@ -10,4 +10,12 @@ export const Container = styled.div`
   justify-content: space-between;
 
   font-weight: 500;
+
+  > span {
+    font-size:  1.25rem;
+  }
+
+  span:last-child {
+    font-size: 1.5rem;
+  }
 `;
