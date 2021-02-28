@@ -1,12 +1,16 @@
-import * as S from './styles';
+import { useContext } from 'react';
+
 import { ChallengeActive, ChallengeNotActive } from '../';
+import { ChallengesContext } from '../../hooks/ChallengesContext';
+
+import * as S from './styles';
 
 export function ChallengeBox() {
-  const isActive = true;
+  const { activeChallenge } = useContext(ChallengesContext);
 
   return (
     <S.Container>
-      {isActive ? <ChallengeActive /> : <ChallengeNotActive />}
+      {activeChallenge ? <ChallengeActive /> : <ChallengeNotActive />}
     </S.Container>
   );
 };

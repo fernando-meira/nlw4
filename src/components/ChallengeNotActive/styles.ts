@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '../../themes/colors';
 
 export const Container = styled.div`
-  padding: 4rem;
+  padding: 2rem;
 
   display: flex;
   align-items: center;

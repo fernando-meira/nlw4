@@ -45,6 +45,7 @@ export const Container = styled.div`
 
     > p {
       line-height: 1.5;
+      text-align: center;
     }
   }
 

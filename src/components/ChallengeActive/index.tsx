@@ -1,25 +1,38 @@
+import { useContext } from 'react';
+
 import colors from '../../themes/colors';
+import { ChallengesContext } from '../../hooks/ChallengesContext';
+
 import * as S from './styles';
 
 export function ChallengeActive() {
+  const { activeChallenge, resetChallenge, completedChallenge } = useContext(ChallengesContext);
+
   return (
     <S.Container>
-      <header>Ganhe 400 xp</header>
+      <header>Ganhe {activeChallenge.amount} xp</header>
 
       <main>
-        <img src="icons/body.svg" alt="Body" />
+        <img src={`icons/${activeChallenge.type}.svg`} alt="Body" />
 
         <strong>Novo desafio</strong>
 
-        <p>Levante e faça uma caminhada de 3 minutos.</p>
+        <p>{activeChallenge.description}</p>
       </main>
 
       <footer>
-        <S.ChallengeButton type="button" backgroundColor={colors.red}>
+        <S.ChallengeButton
+          type="button"
+          onClick={resetChallenge}
+          backgroundColor={colors.red}
+        >
           Falhei
         </S.ChallengeButton>
 
-        <S.ChallengeButton type="button">
+        <S.ChallengeButton
+          type="button"
+          onClick={completedChallenge}
+        >
           Completei
         </S.ChallengeButton>
       </footer>
