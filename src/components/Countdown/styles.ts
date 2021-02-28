@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import colors from '../../themes/colors';
 
+interface IButtonProps {
+  isActive?: boolean;
+}
+
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -43,7 +47,7 @@ export const Container = styled.div`
   }
 `;
 
-export const CountdownButtom = styled.button`
+export const CountdownButtom = styled.button<IButtonProps>`
   border: 0;
   width: 100%;
   height: 5rem;
@@ -54,12 +58,21 @@ export const CountdownButtom = styled.button`
   align-items: center;
   justify-content: center;
 
+  font-weight: 600;
   font-size: 1.25rem;
-  color: ${colors.white};
-  background-color: ${colors.blue};
   transition: background-color .3s;
+  color: ${({ isActive }) => isActive ? colors.title : colors.white};
+  background-color: ${({ isActive }) => isActive ? colors.white : colors.blue};
 
   :hover {
-    background-color: ${colors.blueDark};
+    color: ${colors.white};
+    background-color: ${({ isActive }) => isActive ? colors.red : colors.blueDark};
+  }
+
+  :disabled {
+    cursor: not-allowed;
+    color: ${colors.title};
+    background-color: ${colors.white};
+    border-bottom: 4px solid ${colors.green};
   }
 `;
