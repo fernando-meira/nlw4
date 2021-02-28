@@ -4,9 +4,21 @@ import colors from '../../themes/colors';
 import { ChallengesContext } from '../../hooks/ChallengesContext';
 
 import * as S from './styles';
+import { CountdownContext } from '../../hooks/CountdownContext';
 
 export function ChallengeActive() {
   const { activeChallenge, resetChallenge, completedChallenge } = useContext(ChallengesContext);
+  const { resetCountdown } = useContext(CountdownContext);
+
+  function handleChallengeSucceeded() {
+    completedChallenge();
+    resetCountdown();
+  }
+
+  function handleChallengeFailed() {
+    resetChallenge();
+    resetCountdown();
+  };
 
   return (
     <S.Container>
@@ -23,15 +35,15 @@ export function ChallengeActive() {
       <footer>
         <S.ChallengeButton
           type="button"
-          onClick={resetChallenge}
           backgroundColor={colors.red}
+          onClick={handleChallengeFailed}
         >
           Falhei
         </S.ChallengeButton>
 
         <S.ChallengeButton
           type="button"
-          onClick={completedChallenge}
+          onClick={handleChallengeSucceeded}
         >
           Completei
         </S.ChallengeButton>
