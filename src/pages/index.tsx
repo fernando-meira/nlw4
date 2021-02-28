@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import styles from '../styles/pages/Home.module.css';
-import { Profile, Countdown, ExperienceBar, CompletedChallenges } from '../components';
+import { Profile, Countdown, ExperienceBar, ChallengeBox, CompletedChallenges } from '../components';
 
 export default function Home() {
   return (
@@ -22,7 +22,7 @@ export default function Home() {
         </div>
 
         <div>
-
+          <ChallengeBox />
         </div>
       </section>
     </div>
